@@ -9,6 +9,8 @@ private:
     int** matrix;
     int rows;
     int columns;
+
+    void erase();
 public:
     Matrix(int rows, int columns);
     Matrix(int size);

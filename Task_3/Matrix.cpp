@@ -1,6 +1,15 @@
 #include "Matrix.h"
 #define WRONG_SIZE -1
 
+void Matrix::erase()
+{
+    for (int i = 0; i < rows; i++)
+    {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+}
+
 Matrix::Matrix(int rows, int columns) : rows(rows), columns(columns)
 {
     if (rows > 0 && columns > 0)
@@ -58,11 +67,7 @@ Matrix::Matrix(Matrix& mtx) : rows(mtx.getRows()), columns(mtx.getColumns())
 
 Matrix::~Matrix()
 {
-    for (int i = 0; i < rows; i++)
-    {
-        delete[] matrix[i];
-    }
-    delete[] matrix;
+    erase();
 }
 
 int Matrix::getRows() const
