@@ -140,13 +140,13 @@ Matrix& Matrix::operator*(int value)
     {
         for (int j = 0; j < columns; j++)
         {
-            *mtx[i][j] *= value;
+            (*mtx)[i][j] *= value;
         }
     }
     return *mtx;
 }
 
-Matrix operator*(int value, Matrix matrix)
+Matrix& operator*(int value, Matrix& matrix)
 {
     return (matrix * value);
 }
@@ -158,7 +158,7 @@ Matrix& Matrix::operator-(Matrix& other)
     {
         for (int j = 0; j < columns; j++)
         {
-            *mtx[i][j] -= other[i][j];
+            (*mtx)[i][j] -= other[i][j];
         }
     }
     return *mtx;
@@ -171,7 +171,7 @@ Matrix& Matrix::transpon()
     {
         for (int j = 0; j < columns; j++)
         {
-            *mtx[i][j] = matrix[j][i];
+            (*mtx)[i][j] = matrix[j][i];
         }
     }
     return *mtx;
