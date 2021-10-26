@@ -182,6 +182,7 @@ Matrix& Matrix::mirrorSecondary()
                 (*mtx)[i][j] = matrix[rows - 1 - j][columns - 1 - i];
             }
         }
+        return *mtx;
     }
     else
     {
