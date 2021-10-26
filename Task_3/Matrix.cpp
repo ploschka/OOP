@@ -1,5 +1,4 @@
 #include "Matrix.h"
-#define WRONG_SIZE -1
 
 void Matrix::erase()
 {
