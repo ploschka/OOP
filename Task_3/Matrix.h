@@ -27,4 +27,5 @@ public:
     double average();
     int mostUnaverage();
     Matrix& transpon();
+    Matrix& mirrorSecondary();
 };
