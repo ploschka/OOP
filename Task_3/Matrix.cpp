@@ -67,7 +67,7 @@ int Matrix::getColumns() const
 
 int* Matrix::operator[](int index)
 {
-    return matrix[index];
+    return (index >= 0) ? (matrix[index]) : (throw IndexException("Invalid index"));
 }
 
 std::ostream& operator<< (std::ostream& out, Matrix& matrix)
