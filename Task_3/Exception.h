@@ -15,3 +15,9 @@ class SizeException:public MatrixException
 public:
     SizeException(std::string error) : MatrixException(error) {}
 };
+
+class IndexException:public MatrixException
+{
+public:
+    IndexException(std::string error) : MatrixException(error) {}
+};
