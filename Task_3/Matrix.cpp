@@ -26,21 +26,7 @@ Matrix::Matrix(int rows, int columns) : rows(rows), columns(columns)
     }
 }
 
-Matrix::Matrix(int size) : rows(size), columns(size)
-{
-    if (size > 0)
-    {
-        matrix = new int*[size];
-        for (int i = 0; i < size; i++)
-        {
-            matrix[i] = new int[size];
-        }
-    }
-    else
-    {
-        throw SizeException("Invalid size");
-    }
-}
+Matrix::Matrix(int size) : Matrix(size, size) {}
 
 Matrix::Matrix(Matrix& mtx) : rows(mtx.getRows()), columns(mtx.getColumns())
 {
