@@ -139,26 +139,52 @@ Matrix& operator*(int value, Matrix& matrix)
 
 Matrix& Matrix::operator-(Matrix& other)
 {
-    Matrix* mtx = new Matrix(*this);
-    for (int i = 0; i < rows; i++)
+    if ((this->rows == other.rows) && (this->columns == other.columns))
     {
-        for (int j = 0; j < columns; j++)
+        Matrix* mtx = new Matrix(*this);
+        for (int i = 0; i < rows; i++)
         {
-            (*mtx)[i][j] -= other[i][j];
+            for (int j = 0; j < columns; j++)
+            {
+                (*mtx)[i][j] -= other[i][j];
+            }
         }
+        return *mtx;
     }
-    return *mtx;
+    else
+    {
+        throw SizeException("Different sizes");
+    }
 }
 
 Matrix& Matrix::transpon()
 {
-    Matrix* mtx = new Matrix(rows, columns);
-    for (int i = 0; i < rows; i++)
+    Matrix* mtx = new Matrix(columns, rows);
+    for (int i = 0; i < columns; i++)
     {
-        for (int j = 0; j < columns; j++)
+        for (int j = 0; j < rows; j++)
         {
             (*mtx)[i][j] = matrix[j][i];
         }
     }
     return *mtx;
+}
+
+Matrix& Matrix::mirrorSecondary()
+{
+    if (rows == columns)
+    {
+        Matrix* mtx = new Matrix(rows, columns);
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                (*mtx)[i][j] = matrix[rows - 1 - j][columns - 1 - i];
+            }
+        }
+    }
+    else
+    {
+        throw SizeException("Not a square matrix");
+    }
 }
