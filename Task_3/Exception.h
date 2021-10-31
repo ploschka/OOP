@@ -4,20 +4,17 @@
 class MatrixException
 {
 public:
-    MatrixException(std::string error)
-    {
-        std::cerr << error << std::endl;
-    }
+    MatrixException(std::string error);
 };
 
 class SizeException:public MatrixException
 {
 public:
-    SizeException(std::string error) : MatrixException(error) {}
+    SizeException(std::string error);
 };
 
 class IndexException:public MatrixException
 {
 public:
-    IndexException(std::string error) : MatrixException(error) {}
+    IndexException(std::string error);
 };
