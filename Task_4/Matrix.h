@@ -22,7 +22,7 @@ public:
     Matrix& operator*(int value);
     friend Matrix& operator*(int value, Matrix& matrix);
     Matrix& operator-(Matrix& other);
-    friend std::ostream& operator<< (std::ostream& out, Matrix& matrix);
+    friend void printMatrix(Matrix& matrix);
 
     double average();
     int mostUnaverage();
