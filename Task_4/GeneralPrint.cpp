@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Matrix.h"
 
-void printMatrix(std::ostream out, Matrix& matrix)
+void printMatrix(std::ostream& out, Matrix& matrix)
 {
     int rws = matrix.getRows();
     int cls = matrix.getColumns();

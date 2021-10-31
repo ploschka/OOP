@@ -70,21 +70,6 @@ int* Matrix::operator[](int index)
     return (index >= 0) ? (matrix[index]) : (throw IndexException("Invalid index"));
 }
 
-std::ostream& operator<< (std::ostream& out, Matrix& matrix)
-{
-    int rws = matrix.getRows();
-    int cls = matrix.getColumns();
-    for (int i = 0; i < rws; i++)
-    {
-        for (int j = 0; j < cls; j++)
-        {
-            out << matrix[i][j] << '\t';
-        }
-        out << std::endl;
-    }
-    return out;
-}
-
 double Matrix::average()
 {
     int sum = 0;
