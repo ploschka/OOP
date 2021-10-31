@@ -22,7 +22,6 @@ public:
     Matrix& operator*(int value);
     friend Matrix& operator*(int value, Matrix& matrix);
     Matrix& operator-(Matrix& other);
-    friend void printMatrix(Matrix& matrix);
 
     double average();
     int mostUnaverage();
