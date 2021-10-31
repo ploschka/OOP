@@ -1,5 +1,4 @@
 #include "Exception.h"
-#include <iostream>
 
 MatrixException::MatrixException(std::string error)
 {

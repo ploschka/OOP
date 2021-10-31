@@ -78,7 +78,7 @@ std::ostream& operator<< (std::ostream& out, Matrix& matrix)
     {
         for (int j = 0; j < cls; j++)
         {
-            out << matrix[i][j] << ' ';
+            out << matrix[i][j] << '\t';
         }
         out << std::endl;
     }
