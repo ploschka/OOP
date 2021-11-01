@@ -3,8 +3,4 @@ case "$1" in
 -c) Mode="Console";;
 esac
 
-cmake -S. -B Build -DMODE=${Mode}
-
-cd Build
-
-make
+cmake -S. -B Build -DMODE=${Mode} && cd Build && make
