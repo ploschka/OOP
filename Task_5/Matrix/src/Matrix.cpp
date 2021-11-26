@@ -9,6 +9,17 @@ void Matrix::erase()
     delete[] matrix;
 }
 
+void Matrix::initZero()
+{
+    for(int i = 0; i < rows; i++)
+    {
+        for(int j = 0; j < columns; j++)
+        {
+            this->matrix[i][j] = 0;
+        }
+    }
+}
+
 Matrix::Matrix(int rows, int columns) : rows(rows), columns(columns)
 {
     if (rows > 0 && columns > 0)
@@ -18,6 +29,7 @@ Matrix::Matrix(int rows, int columns) : rows(rows), columns(columns)
         {
             matrix[i] = new int[columns];
         }
+        initZero();
     }
     else
     {

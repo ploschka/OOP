@@ -1,11 +1,13 @@
 message("MODE=${MODE}")
 
-add_library(Print${MODE} SHARED PrintMatrix${MODE}.cpp GeneralPrint.cpp)
+set(MATRIX_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Matrix/include)
 
-add_library(Matrix SHARED Matrix.cpp Exception.cpp)
+include_directories(${MATRIX_INCLUDE_DIR})
+
+add_subdirectory(Matrix)
+
+add_subdirectory(test)
 
 add_executable(main main.cpp)
 
-target_link_libraries(Matrix Print${MODE})
-
-target_link_libraries(main Matrix)
+target_link_libraries(main Print${MODE})
