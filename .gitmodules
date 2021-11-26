@@ -1,6 +1,3 @@
-[submodule "Task_5/test/--force"]
-	path = Task_5/test/--force
-	url = git@github.com:google/googletest.git
 [submodule "Task_5/test/googletest"]
 	path = Task_5/test/googletest
 	url = git@github.com:google/googletest.git
