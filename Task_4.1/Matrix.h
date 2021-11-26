@@ -11,6 +11,7 @@ private:
     int columns;
 
     void erase();
+    void initZero();
 public:
     Matrix(int rows, int columns);
     Matrix(int size);
