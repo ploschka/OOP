@@ -1,6 +1,72 @@
 #include "gtest/gtest.h"
 #include "Matrix.h"
 
+TEST(MatrixConstructorTest, NotSquareMatrixConstructorTest)
+{
+    Matrix mtx(5, 6);
+    EXPECT_EQ(5, mtx.getRows());
+    EXPECT_EQ(6, mtx.getColumns());
+    for(int i = 0; i < 5; i++)
+    {
+        for(int j = 0; j < 6; j++)
+        {
+            EXPECT_EQ(0, mtx[i][j]);
+        }
+    }
+
+    try
+    {
+        Matrix mtx2(0, 5);
+    }
+    catch(SizeException error)
+    {
+        SUCCEED();
+    }
+    catch(...)
+    {
+        FAIL();
+    }
+
+    try
+    {
+        Matrix mtx2(-3, 5);
+    }
+    catch(SizeException error)
+    {
+        SUCCEED();
+    }
+    catch(...)
+    {
+        FAIL();
+    }
+    
+    try
+    {
+        Matrix mtx2(5, 0);
+    }
+    catch(SizeException error)
+    {
+        SUCCEED();
+    }
+    catch(...)
+    {
+        FAIL();
+    }
+
+    try
+    {
+        Matrix mtx2(5, -2);
+    }
+    catch(SizeException error)
+    {
+        SUCCEED();
+    }
+    catch(...)
+    {
+        FAIL();
+    }
+}
+
 TEST(MatrixConstructorTest, SquareMatrixConstructorTest)
 {
     Matrix mtx(5);
@@ -13,19 +79,18 @@ TEST(MatrixConstructorTest, SquareMatrixConstructorTest)
             EXPECT_EQ(0, mtx[i][j]);
         }
     }
-}
 
-TEST(MatrixConstructorTest, NotSquareMatrixConstructorTest)
-{
-    Matrix mtx(5, 6);
-    EXPECT_EQ(5, mtx.getRows());
-    EXPECT_EQ(6, mtx.getColumns());
-    for(int i = 0; i < 5; i++)
+    try
     {
-        for(int j = 0; j < 6; j++)
-        {
-            EXPECT_EQ(0, mtx[i][j]);
-        }
+        Matrix mtx2(0);
+    }
+    catch(SizeException error)
+    {
+        SUCCEED();
+    }
+    catch(...)
+    {
+        FAIL();
     }
 }
 
@@ -101,11 +166,18 @@ TEST(MatrixByNumberMultiplicationTest, NumberByMatrixMultiplicationTest)
 {
     Matrix mtx(5,6);
 
+    int** mtx2 = new int*[5];
+    for(int i = 0; i < 5; i++)
+    {
+        mtx2[i] = new int[6];
+    }
+
     for(int i = 0; i < 5; i++)
     {
         for(int j = 0; j < 6; j++)
         {
             mtx[i][j] = i;
+            mtx2[i][j] = i * 5;
         }
     }
 
@@ -118,6 +190,8 @@ TEST(MatrixByNumberMultiplicationTest, NumberByMatrixMultiplicationTest)
         for(int j = 0; j < 6; j++)
         {
             EXPECT_EQ(resmtx1[i][j], resmtx2[i][j]);
+            EXPECT_EQ(resmtx1[i][j], mtx2[i][j]);
+            EXPECT_EQ(resmtx2[i][j], mtx2[i][j]);
         }
     }
 }
