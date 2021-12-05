@@ -1,3 +1,6 @@
 [submodule "Task_5/test/googletest"]
 	path = Task_5/test/googletest
 	url = git@github.com:google/googletest.git
+[submodule "Task_6/tests/googletest"]
+	path = Task_6/tests/googletest
+	url = git@github.com:google/googletest.git
