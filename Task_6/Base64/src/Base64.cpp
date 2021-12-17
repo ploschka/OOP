@@ -47,6 +47,23 @@ std::string encode(const std::string& input)
 std::string decode(const std::string& input)
 {
     int len = input.length();
+    if((len % 4) != 0)
+    {
+        throw(std::length_error("Not a Base64 string length\nFile: " + std::string(__FILE__) + "\nLine: " + std::to_string(__LINE__)));
+    }
+
+    for(char i: input)
+    {
+        if  (!((i != '=') ||
+            (i != '/') ||
+            (i != '+') ||
+            ((i >= 'A') && (i <= 'Z')) ||
+            ((i >= 'a') && (i <= 'z')) ||
+            ((i >= '0') && (i <= '1'))))
+        {
+            throw(std::invalid_argument("Not a Base64 string\nFile: " + std::string(__FILE__) + "\nLine: " + std::to_string(__LINE__)));
+        }
+    }
     std::map<char, int> characters {{'A', 0},  {'B', 1},  {'C', 2},  {'D', 3}, 
                                     {'E', 4},  {'F', 5},  {'G', 6},  {'H', 7}, 
                                     {'I', 8},  {'J', 9},  {'K', 10}, {'L', 11}, 
