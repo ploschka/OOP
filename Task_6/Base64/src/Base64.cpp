@@ -5,6 +5,11 @@ namespace Base64
 {
 std::string encode(const std::string& input)
 {
+    if (input.empty())
+    {
+        return "";
+    }
+
     int len = input.length();
     std::string characters("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/");
     short int equalityCount = ((len % 3) == 0) ? 0 : (3 - (len % 3));
@@ -46,10 +51,15 @@ std::string encode(const std::string& input)
 
 std::string decode(const std::string& input)
 {
+    if (input.empty())
+    {
+        return "";
+    }
+
     int len = input.length();
     if((len % 4) != 0)
     {
-        throw(std::length_error("Not a Base64 string length\nFile: " + std::string(__FILE__) + "\nLine: " + std::to_string(__LINE__)));
+        throw(std::length_error("Not a Base64 string length"));
     }
 
     for(char i: input)
@@ -61,7 +71,7 @@ std::string decode(const std::string& input)
             ((i >= 'a') && (i <= 'z')) ||
             ((i >= '0') && (i <= '1'))))
         {
-            throw(std::invalid_argument("Not a Base64 string\nFile: " + std::string(__FILE__) + "\nLine: " + std::to_string(__LINE__)));
+            throw(std::invalid_argument("Not a Base64 string"));
         }
     }
     std::map<char, int> characters {{'A', 0},  {'B', 1},  {'C', 2},  {'D', 3}, 
