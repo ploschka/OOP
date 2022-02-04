@@ -7,8 +7,8 @@ include_directories(${EBASH_INCLUDE_DIR})
 add_subdirectory(Polish)
 add_subdirectory(EBash)
 
-add_subdirectory(tests)
+#[[add_subdirectory(tests)]]
 
 add_executable(main main.cpp)
 
-target_link_libraries(main Base64)
+target_link_libraries(main Polish)
